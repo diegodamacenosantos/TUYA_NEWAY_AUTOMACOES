@@ -19,26 +19,19 @@ O estado dos dispositivos chega em tempo real pelo MQTT da própria Tuya (sem co
 
 ## Instalar
 
+O Node-RED instala o pacote direto pelo editor, sem linha de comando.
+
 1. Baixe o arquivo `tuya-neway-automacoes-0.4.1.tgz` deste repositório.
-2. Instale no Node-RED por um destes caminhos:
+2. No Node-RED, abra o menu (três barras), **Gerenciar paleta**, aba **Instalar**, e envie o arquivo `.tgz` (botão de enviar/upload).
+3. Confirme a instalação. Na paleta aparece o grupo **tuya neway automacoes** com o nó **Tuya**. Se não aparecer, reinicie o Node-RED.
 
-**Pelo endereço de administração do Node-RED** (funciona com Node-RED comum e em Docker, desde que o container tenha acesso à internet para baixar as dependências). Em um terminal, na pasta onde está o arquivo:
+Se você já tinha a versão antiga `tuya-neway-nuvem`, desinstale-a antes (veja Desinstalar): os tipos de nó são os mesmos e conflitam.
 
-```bash
-curl -F "tarball=@tuya-neway-automacoes-0.4.1.tgz" http://SEU_NODE_RED:1880/nodes
-```
-
-Troque `SEU_NODE_RED` pelo endereço do seu Node-RED. Se o administrador do seu Node-RED tem senha, é preciso enviar o token de acesso (`-H "Authorization: Bearer SEU_TOKEN"`).
-
-**Ou pela pasta de dados do Node-RED** (a que tem o `package.json`, geralmente `~/.node-red`; no Docker é `/data`):
+Se a sua versão do Node-RED não tiver o envio de arquivo, instale pela linha de comando, na pasta de dados do Node-RED (a que tem o `package.json`, geralmente `~/.node-red`; no Docker é `/data`):
 
 ```bash
 npm install /caminho/tuya-neway-automacoes-0.4.1.tgz
 ```
-
-3. Reinicie o Node-RED se os nós não aparecerem na paleta. Na paleta aparece o grupo **tuya neway automacoes** com o nó **Tuya**.
-
-Se você já tinha a versão antiga `tuya-neway-nuvem`, remova-a antes (os tipos de nó são os mesmos e conflitam): `DELETE http://SEU_NODE_RED:1880/nodes/tuya-neway-nuvem`, ou `npm uninstall tuya-neway-nuvem` na pasta de dados.
 
 ## Conta (feita uma vez)
 
@@ -123,22 +116,25 @@ A etiqueta do nó mostra `código=valor` (verde quando verdadeiro), `offline` em
 |---|---|
 | Conta em `sem login` | gerar o QR de novo e escanear |
 | Lista de dispositivos vazia | fazer o Deploy da conta e esperar `online`; depois reabrir o nó |
-| Mudança do nome do módulo | remover a versão antiga (veja Instalar) |
+| Instalou e aparecem nós duplicados ou erro de tipo | desinstalar a versão antiga `tuya-neway-nuvem` (veja Desinstalar) |
 | Editor mostra a versão antiga do nó | reiniciar o Node-RED |
 | Comando recusado | conferir o código e o valor aceitos pelo aparelho (veja *Ver dados brutos*) |
 | Parou de funcionar de repente | a Tuya pode ter mudado o acesso; abra uma issue neste repositório com a etiqueta da conta e o *Ver dados brutos* (apague tokens e senhas antes de colar) |
 
 ## Atualizar
 
-Baixe o `.tgz` novo e instale do mesmo jeito. Se a versão nova mudar os campos do nó, reinicie o Node-RED para o editor mostrar a mudança. O login da conta é mantido.
+Baixe o `.tgz` novo e instale do mesmo jeito (Gerenciar paleta, Instalar, enviar o arquivo). Se a versão nova mudar os campos do nó, reinicie o Node-RED para o editor mostrar a mudança. O login da conta é mantido.
 
 ## Desinstalar
 
-```bash
-curl -X DELETE http://SEU_NODE_RED:1880/nodes/tuya-neway-automacoes
-```
+Antes de remover o pacote, apague tudo que o usa. O Node-RED não remove um pacote que ainda tem nós em uso, e a conta guarda o login:
 
-ou `npm uninstall tuya-neway-automacoes` na pasta de dados. Apague também o arquivo `tuya_sessao_<id da conta>.json` da pasta de dados, se quiser remover o login salvo.
+1. Apague **todos os nós Tuya** de todos os fluxos.
+2. Apague a **conta Tuya salva**: menu, **Configuration nodes**, escolha a conta Tuya e exclua.
+3. Faça o **Deploy**.
+4. Menu, **Gerenciar paleta**, aba **Nós**, ache `tuya-neway-automacoes` e clique em **Remover**.
+
+Isso apaga o login salvo no Node-RED. Se quiser voltar a usar depois, será preciso gerar o QR de novo. Por segurança, apague também o arquivo `tuya_sessao_<id da conta>.json` da pasta de dados do Node-RED, se ele existir.
 
 ## Segurança
 
