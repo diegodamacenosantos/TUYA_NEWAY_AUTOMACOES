@@ -10,10 +10,11 @@ Dependências: `mqtt` e `qrcode-generator` (instaladas junto com o pacote).
 
 ## O que vem no pacote
 
-Dois nós, no grupo **tuya neway automacoes** da paleta:
+Na paleta, no grupo **tuya neway automacoes**, aparece um nó:
 
-- **Tuya** (`tuya-dispositivo`): lê o estado, consulta e envia comandos a um dispositivo.
-- **Conta Tuya** (`tuya-conta`, nó de configuração): guarda o login e a ligação com a nuvem. Todos os nós Tuya usam uma conta.
+- **Tuya**: lê o estado, consulta e envia comandos a um dispositivo.
+
+A conta Tuya (login e ligação com a nuvem) não aparece na paleta, porque é um nó de configuração, como as contas e os brokers de outros nós do Node-RED. Ela é criada de dentro do nó **Tuya** (campo **Conta**, botão do lápis) e fica listada no menu, em **Configuration nodes**. Todos os nós Tuya usam uma conta.
 
 O estado dos dispositivos chega em tempo real pelo MQTT da própria Tuya (sem consultar de tempos em tempos). Os comandos vão pela API da Tuya.
 
