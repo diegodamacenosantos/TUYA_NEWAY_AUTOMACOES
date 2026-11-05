@@ -2,7 +2,7 @@
 
 Nós para o Node-RED que controlam dispositivos Tuya (Smart Life / Tuya Smart) pela nuvem da Tuya: lâmpadas, tomadas, interruptores, relés e outros. O login é por QR code no próprio editor do Node-RED, como a integração Tuya do Home Assistant, **sem criar projeto na Tuya IoT Platform**, sem Access ID e sem Access Secret.
 
-Versão atual: **0.4.1**. Neway Automações.
+Neway Automações.
 
 Aviso: este pacote usa o mesmo acesso "device-sharing" que o Home Assistant usa. Não é uma API pública com garantia. Se a Tuya mudar esse acesso, o pacote precisa de atualização.
 
@@ -21,11 +21,11 @@ O estado dos dispositivos chega em tempo real pelo MQTT da própria Tuya (sem co
 
 A instalação é feita dentro do próprio Node-RED.
 
-1. Baixe o arquivo `tuya-neway-automacoes-0.4.1.tgz` deste repositório.
+1. Baixe o arquivo `.tgz` deste repositório.
 2. No Node-RED, abra o menu (três barras), **Gerenciar paleta**, aba **Instalar**, e envie o arquivo `.tgz` (botão de enviar/upload).
 3. Confirme a instalação. Na paleta aparece o grupo **tuya neway automacoes** com o nó **Tuya**. Se não aparecer, reinicie o Node-RED.
 
-Se você já tinha a versão antiga `tuya-neway-nuvem`, desinstale-a antes (veja Desinstalar): os tipos de nó são os mesmos e conflitam.
+Se você já tinha o pacote anterior `tuya-neway-nuvem`, desinstale-a antes (veja Desinstalar): os tipos de nó são os mesmos e conflitam.
 
 ## Conta (feita uma vez)
 
@@ -110,14 +110,14 @@ A etiqueta do nó mostra `código=valor` (verde quando verdadeiro), `offline` em
 |---|---|
 | Conta em `sem login` | gerar o QR de novo e escanear |
 | Lista de dispositivos vazia | fazer o Deploy da conta e esperar `online`; depois reabrir o nó |
-| Instalou e aparecem nós duplicados ou erro de tipo | desinstalar a versão antiga `tuya-neway-nuvem` (veja Desinstalar) |
-| Editor mostra a versão antiga do nó | reiniciar o Node-RED |
+| Instalou e aparecem nós duplicados ou erro de tipo | desinstalar o pacote anterior `tuya-neway-nuvem` (veja Desinstalar) |
+| Editor mostra o nó como era antes da atualização | reiniciar o Node-RED |
 | Comando recusado | conferir o código e o valor aceitos pelo aparelho (veja *Ver dados brutos*) |
 | Parou de funcionar de repente | a Tuya pode ter mudado o acesso; abra uma issue neste repositório com a etiqueta da conta e o *Ver dados brutos* (apague tokens e senhas antes de colar) |
 
 ## Atualizar
 
-Baixe o `.tgz` novo e instale do mesmo jeito (Gerenciar paleta, Instalar, enviar o arquivo). Se a versão nova mudar os campos do nó, reinicie o Node-RED para o editor mostrar a mudança. O login da conta é mantido.
+Baixe o `.tgz` atual e instale do mesmo jeito (Gerenciar paleta, Instalar, enviar o arquivo). Se a atualização mudar os campos do nó, reinicie o Node-RED para o editor mostrar a mudança. O login da conta é mantido.
 
 ## Desinstalar
 
