@@ -19,19 +19,13 @@ O estado dos dispositivos chega em tempo real pelo MQTT da própria Tuya (sem co
 
 ## Instalar
 
-O Node-RED instala o pacote direto pelo editor, sem linha de comando.
+A instalação é feita dentro do próprio Node-RED.
 
 1. Baixe o arquivo `tuya-neway-automacoes-0.4.1.tgz` deste repositório.
 2. No Node-RED, abra o menu (três barras), **Gerenciar paleta**, aba **Instalar**, e envie o arquivo `.tgz` (botão de enviar/upload).
 3. Confirme a instalação. Na paleta aparece o grupo **tuya neway automacoes** com o nó **Tuya**. Se não aparecer, reinicie o Node-RED.
 
 Se você já tinha a versão antiga `tuya-neway-nuvem`, desinstale-a antes (veja Desinstalar): os tipos de nó são os mesmos e conflitam.
-
-Se a sua versão do Node-RED não tiver o envio de arquivo, instale pela linha de comando, na pasta de dados do Node-RED (a que tem o `package.json`, geralmente `~/.node-red`; no Docker é `/data`):
-
-```bash
-npm install /caminho/tuya-neway-automacoes-0.4.1.tgz
-```
 
 ## Conta (feita uma vez)
 
@@ -134,8 +128,7 @@ Antes de remover o pacote, apague tudo que o usa. O Node-RED não remove um paco
 3. Faça o **Deploy**.
 4. Menu, **Gerenciar paleta**, aba **Nós**, ache `tuya-neway-automacoes` e clique em **Remover**.
 
-Isso apaga o login salvo no Node-RED. Se quiser voltar a usar depois, será preciso gerar o QR de novo. Por segurança, apague também o arquivo `tuya_sessao_<id da conta>.json` da pasta de dados do Node-RED, se ele existir.
-
+Isso apaga o login salvo no Node-RED. Se quiser voltar a usar depois, será preciso gerar o QR de novo.
 ## Segurança
 
 O login (tokens) fica nas credenciais do Node-RED e em um arquivo `tuya_sessao_<id>.json` na pasta de dados. Quem tem acesso à sua pasta de dados ou ao editor do Node-RED consegue controlar seus aparelhos Tuya. Proteja o administrador do Node-RED com senha se ele estiver exposto na rede. O botão *Ver dados brutos* mostra ids de dispositivos e estados; não cole o conteúdo em lugares públicos sem apagar o que for pessoal.
