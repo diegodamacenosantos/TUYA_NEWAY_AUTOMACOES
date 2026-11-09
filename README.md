@@ -46,12 +46,14 @@ A etiqueta da conta mostra `online (N disp.)` quando está funcionando, com a qu
 
 ## Usar o nó Tuya
 
-Escolha:
-
-- **Conta:** a conta criada acima.
-- **Dispositivo:** a lista traz os dispositivos da sua conta (todas as casas).
-- **Código:** o ponto de dados do aparelho (por exemplo `switch_1`, `switch_led`, `bright_value_v2`). A lista mostra os códigos do dispositivo escolhido. Em "Todos os códigos", o nó trata todos.
-- **Tipo:** define as portas do nó.
+| Campo | O que faz |
+|---|---|
+| Nome | só um rótulo para você reconhecer o nó no fluxo (opcional) |
+| Conta | a conta Tuya criada acima |
+| Tipo | define o que o nó faz e quais portas tem: Status, Leitura ou Comando (explicados abaixo) |
+| Dispositivo | o aparelho, escolhido numa lista com os dispositivos da sua conta (todas as casas) |
+| Código | o ponto de dados do aparelho (por exemplo `switch_1`, `switch_led`, `bright_value_v2`). A lista mostra os códigos do aparelho escolhido. Em "Todos os códigos", o nó trata todos |
+| Emitir ao iniciar | só no tipo Status, e vem marcado. Marcado: assim que a conta carrega, o estado atual sai uma vez, sem esperar uma mudança |
 
 ### Tipo: Status (só saída)
 
@@ -69,7 +71,7 @@ Saída:
 
 ### Tipo: Leitura (entrada e saída)
 
-Qualquer mensagem na entrada consulta o aparelho na nuvem e devolve na saída o valor atual do código escolhido (ou de todos). Útil para ler o estado sob demanda. Se a consulta falhar, devolve o último estado conhecido.
+Qualquer mensagem na entrada consulta o aparelho na nuvem e devolve na saída o valor atual do código escolhido (ou de todos). Útil para ler o estado sob demanda. Se a consulta à nuvem falhar, devolve o último estado conhecido. Se o aparelho estiver offline, o nó dá erro e nada sai; se o código escolhido não existir no aparelho, também dá erro.
 
 ### Tipo: Comando (só entrada, sem saída)
 
