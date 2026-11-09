@@ -77,6 +77,9 @@ Qualquer mensagem na entrada consulta o aparelho na nuvem e devolve na saída o 
 
 Envia o comando ao aparelho. O nó não tem saída.
 
+- **Campo Comando (valor fixo):** o nó tem um campo **Comando** com seletor de tipo (texto, número ou booleano). Preenchido, qualquer mensagem que chegar na entrada dispara esse valor no Código escolhido, sem precisar de *inject* com payload. Para ligar uma tomada: Código `switch_1`, Comando booleano `true`, e um *inject* qualquer na entrada.
+- **Campo Comando vazio** (texto vazio): o valor vem da mensagem, como descrito abaixo.
+
 - **Com um Código escolhido:** `msg.payload` é o valor. `ON`/`true` viram verdadeiro, `OFF`/`false` viram falso e texto numérico vira número.
 - **Com o Código em "Todos":** o código vem de `msg.topic` e o valor de `msg.payload`.
 - **Vários códigos de uma vez:** `msg.payload` pode ser um objeto, como `{"switch_1": true, "switch_2": false}`, ou uma lista `[{"code":"switch_1","value":true}]`.
