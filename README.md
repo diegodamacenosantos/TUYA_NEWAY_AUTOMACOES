@@ -79,6 +79,7 @@ Envia o comando ao aparelho. O nó não tem saída.
 
 - **Campo Comando (valor fixo):** o nó tem um campo **Comando** com seletor de tipo (texto, número ou booleano). Preenchido, qualquer mensagem que chegar na entrada dispara esse valor no Código escolhido, sem precisar de *inject* com payload. Para ligar uma tomada: Código `switch_1`, Comando booleano `true`, e um *inject* qualquer na entrada.
 - **Campo Comando vazio** (texto vazio): o valor vem da mensagem, como descrito abaixo.
+- **Ter saída:** marque para o nó Comando ganhar uma saída e encadear o próximo nó. Depois de enviar o comando, ele espera o **Atraso** (em segundos) e emite uma mensagem. O campo **Passar adiante** (texto ou número) vira o `msg.payload` dessa mensagem; vazio, a mensagem original segue sem mudança. Se o comando falhar, nada sai.
 
 - **Com um Código escolhido:** `msg.payload` é o valor. `ON`/`true` viram verdadeiro, `OFF`/`false` viram falso e texto numérico vira número.
 - **Com o Código em "Todos":** o código vem de `msg.topic` e o valor de `msg.payload`.
