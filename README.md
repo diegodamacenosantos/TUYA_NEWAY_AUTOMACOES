@@ -26,8 +26,6 @@ A instalação é feita dentro do próprio Node-RED.
 2. No Node-RED, abra o menu (três barras), **Gerenciar paleta**, aba **Instalar**, e envie o arquivo `.tgz` (botão de enviar/upload).
 3. Confirme a instalação. Na paleta aparece o grupo **tuya-neway-automacoes** com o nó **Tuya**. Se não aparecer, reinicie o Node-RED.
 
-Se você já tinha o pacote anterior `tuya-neway-nuvem`, desinstale-a antes (veja Desinstalar): os tipos de nó são os mesmos e conflitam.
-
 ## Conta (feita uma vez)
 
 1. Arraste um nó **Tuya** para o fluxo, dê duplo clique e, no campo **Conta**, clique no lápis para criar uma conta.
@@ -125,7 +123,7 @@ A etiqueta do nó mostra `código=valor` (verde quando verdadeiro), `offline` em
 |---|---|
 | Conta em `sem login` | gerar o QR de novo e escanear |
 | Lista de dispositivos vazia | fazer o Deploy da conta e esperar `online`; depois reabrir o nó |
-| Instalou e aparecem nós duplicados ou erro de tipo | desinstalar o pacote anterior `tuya-neway-nuvem` (veja Desinstalar) |
+| Instalou e aparecem nós duplicados ou erro de tipo | desinstalar o pacote (veja Desinstalar) e instalar de novo |
 | Editor mostra o nó como era antes da atualização | reiniciar o Node-RED |
 | Comando recusado | conferir o código e o valor aceitos pelo aparelho (veja *Ver dados brutos*) |
 | Parou de funcionar de repente | a Tuya pode ter mudado o acesso; abra uma issue neste repositório com a etiqueta da conta e o *Ver dados brutos* (apague tokens e senhas antes de colar) |
