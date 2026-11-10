@@ -10,7 +10,7 @@ Dependências: `mqtt` e `qrcode-generator` (instaladas junto com o pacote).
 
 ## O que vem no pacote
 
-Na paleta, no grupo **tuya neway automacoes**, aparece um nó:
+Na paleta, no grupo **tuya-neway-automacoes**, aparece um nó:
 
 - **Tuya**: lê o estado, consulta e envia comandos a um dispositivo.
 
@@ -24,7 +24,7 @@ A instalação é feita dentro do próprio Node-RED.
 
 1. Baixe o arquivo `.tgz` deste repositório.
 2. No Node-RED, abra o menu (três barras), **Gerenciar paleta**, aba **Instalar**, e envie o arquivo `.tgz` (botão de enviar/upload).
-3. Confirme a instalação. Na paleta aparece o grupo **tuya neway automacoes** com o nó **Tuya**. Se não aparecer, reinicie o Node-RED.
+3. Confirme a instalação. Na paleta aparece o grupo **tuya-neway-automacoes** com o nó **Tuya**. Se não aparecer, reinicie o Node-RED.
 
 Se você já tinha o pacote anterior `tuya-neway-nuvem`, desinstale-a antes (veja Desinstalar): os tipos de nó são os mesmos e conflitam.
 
