@@ -73,23 +73,31 @@ Saída:
 
 Qualquer mensagem na entrada consulta o aparelho na nuvem e devolve na saída o valor atual do código escolhido (ou de todos). Útil para ler o estado sob demanda. Se a consulta à nuvem falhar, devolve o último estado conhecido. Se o aparelho estiver offline, o nó dá erro e nada sai; se o código escolhido não existir no aparelho, também dá erro.
 
-### Tipo: Comando (só entrada, sem saída)
+### Tipo: Comando (entrada; saída opcional)
 
-Envia o comando ao aparelho. O nó não tem saída.
+Envia o comando ao aparelho. Por padrão o nó não tem saída.
 
-- **Campo Comando (valor fixo):** o nó tem um campo **Comando** com seletor de tipo (texto, número ou booleano). Preenchido, qualquer mensagem que chegar na entrada dispara esse valor no Código escolhido, sem precisar de *inject* com payload. Para ligar uma tomada: Código `switch_1`, Comando booleano `true`, e um *inject* qualquer na entrada.
-- **Campo Comando vazio** (texto vazio): o valor vem da mensagem, como descrito abaixo.
-- **Ter saída:** marque para o nó Comando ganhar uma saída e encadear o próximo nó. Depois de enviar o comando, ele espera o **Atraso** (em segundos) e emite uma mensagem. O campo **Passar adiante** (texto ou número) vira o `msg.payload` dessa mensagem; vazio, a mensagem original segue sem mudança. Se o comando falhar, nada sai.
+**Qual valor enviar**
 
-- **Com um Código escolhido:** `msg.payload` é o valor. `ON`/`true` viram verdadeiro, `OFF`/`false` viram falso e texto numérico vira número.
-- **Com o Código em "Todos":** o código vem de `msg.topic` e o valor de `msg.payload`.
-- **Vários códigos de uma vez:** `msg.payload` pode ser um objeto, como `{"switch_1": true, "switch_2": false}`, ou uma lista `[{"code":"switch_1","value":true}]`.
+- **Campo Comando (valor fixo):** tem um seletor de tipo (texto, número ou booleano). Preenchido, qualquer mensagem na entrada envia esse valor ao Código escolhido, sem precisar de *inject* com payload. Para ligar uma tomada: Código `switch_1`, Comando booleano `true`, e um *inject* qualquer na entrada.
+- **Campo Comando vazio** (texto vazio): o valor vem da mensagem:
+  - Com um Código escolhido, `msg.payload` é o valor. `ON`/`true` viram verdadeiro, `OFF`/`false` viram falso e texto numérico vira número.
+  - Com o Código em "Todos", o código vem de `msg.topic` e o valor de `msg.payload`.
+  - Vários códigos de uma vez: `msg.payload` pode ser um objeto, como `{"switch_1": true, "switch_2": false}`, ou uma lista `[{"code":"switch_1","value":true}]`.
 
-A etiqueta do nó mostra o resultado do comando (verde) ou o erro (vermelho).
+**Saída e atraso (para encadear nós)**
+
+- **Ter saída:** marque para o nó ganhar uma saída.
+- **Atraso (s):** depois de enviar o comando, o nó espera esse tempo, em segundos.
+- **Passar adiante:** texto ou número que vira o `msg.payload` da mensagem emitida na saída. Vazio, a mensagem original segue sem mudança.
+
+Se o comando falhar, nada sai. Se o nó for reimplantado durante a espera, a espera é cancelada. A etiqueta do nó mostra o resultado do comando (verde) ou o erro (vermelho).
 
 ## Exemplos
 
 **Tomada ou interruptor.** Dispositivo: a tomada. Código: `switch_1`. Tipo: Comando. Um nó *inject* com `payload` = `ON` liga; outro com `OFF` desliga.
+
+**Ligar, esperar e seguir.** Tipo: Comando, Código `switch_1`, Comando booleano `true`, **Ter saída** marcada, Atraso `5`, Passar adiante número `1`. Um *inject* liga a tomada, o nó espera 5 segundos e emite `payload` = `1`, que você liga ao próximo nó (por exemplo outro Tuya em Comando, para desligar depois).
 
 **Lâmpada smart.** Os códigos mais comuns (confira na lista do seu aparelho, que varia por modelo):
 
