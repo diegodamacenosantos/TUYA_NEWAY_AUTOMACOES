@@ -40,6 +40,8 @@ A instalação é feita dentro do próprio Node-RED.
 4. No app, escaneie o QR (ícone de escanear no app) e confirme o login. O editor detecta sozinho e preenche o login.
 5. Clique em **Adicionar/Atualizar** e faça o **Deploy**.
 
+Aparelhos adicionados, removidos ou renomeados no app Smart Life são acompanhados pela conta sem precisar reiniciar o Node-RED (um aparelho novo aparece na lista do nó assim que a Tuya avisa).
+
 A etiqueta da conta mostra `online (N disp.)` quando está funcionando, com a quantidade de dispositivos encontrados. O login fica salvo e se renova sozinho; ele sobrevive a reinícios e a atualizações do pacote. O botão **Ver dados brutos** (no editor da conta) mostra as últimas respostas da Tuya, útil para diagnóstico.
 
 ## Usar o nó Tuya
